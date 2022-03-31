@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<!--
+Project name(项目名称)：HTML5_drag_and_drop_API
+  File name(文件名): test4
+  Authors(作者）: mao
+  Author QQ：1296193245
+  GitHub：https://github.com/maomao124/
+  Date(创建日期)： 2022/3/31
+  Time(创建时间)： 18:31
+  Description(描述)： 无
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            background-color: red;
+            width: 200px;
+            height: 200px;
+        }
+        p{
+            background-color: greenyellow;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+<p id="test" draggable="true" ondragstart="drag(event)">
+    这是一个可以被拖放的段落元素
+</p>
+<div id="container" ondragover="allowDrop(event)" ondrop="drop(event)">
+    这是一个可以用于放置被拖放元素的区域
+</div>
+<script>
+    //ondragstart事件回调函数
+    function drag(ev)
+    {
+        //设置传递的内容为被拖拽元素的id名称，数据类型为纯文本类型
+        ev.dataTransfer.setData("text/plain", ev.target.id);
+    }
+
+    //ondragover事件回调函数
+    function allowDrop(ev)
+    {
+        //解禁当前元素为可放置被拖拽元素的区域
+        ev.preventDefault();
+    }
+
+    //ondrop事件回调函数
+    function drop(ev)
+    {
+        //解禁当前元素为可放置被拖拽元素的区域
+        ev.preventDefault();
+        //获取当前被放置的元素id名称
+        var id = ev.dataTransfer.getData("text");
+        //根据id名称获取元素对象
+        var p = document.getElementById(id);
+        //获取文件夹区域并添加该元素对象
+        ev.target.appendChild(p);
+    }
+</script>
+</body>
+</html>

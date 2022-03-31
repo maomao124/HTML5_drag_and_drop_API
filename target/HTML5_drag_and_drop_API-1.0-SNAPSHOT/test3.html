@@ -28,13 +28,18 @@ Project name(项目名称)：HTML5_drag_and_drop_API
     可以被拖放的元素
 </div>
 <br>
-<div ondragover="f(e)">
+<div ondragover="f(e)" ondrop="f1()">
     可以被放置的区域
 </div>
 <script>
     function f(e)
     {
         e.preventDefault();
+    }
+
+    function f1(e)
+    {
+
     }
 </script>
 </body>
